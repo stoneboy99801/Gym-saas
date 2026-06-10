@@ -38,11 +38,15 @@ export default function Navbar() {
           </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
+        <div className="canvas-social" style={{marginBottom:'15px'}}>
+          <NavLink to="/login" className="primary-btn btn-sm" style={{marginRight:'8px'}}>Login</NavLink>
+          <NavLink to="/signup" className="primary-btn btn-sm btn-outline">Sign Up</NavLink>
+        </div>
         <div className="canvas-social">
-          <a href="#"><i className="fa fa-facebook"></i></a>
-          <a href="#"><i className="fa fa-twitter"></i></a>
-          <a href="#"><i className="fa fa-youtube-play"></i></a>
-          <a href="#"><i className="fa fa-instagram"></i></a>
+          <NavLink to="#"><i className="fa fa-facebook"></i></NavLink>
+          <NavLink to="#"><i className="fa fa-twitter"></i></NavLink>
+          <NavLink to="#"><i className="fa fa-youtube-play"></i></NavLink>
+          <NavLink to="#"><i className="fa fa-instagram"></i></NavLink>
         </div>
       </div>
 
@@ -78,21 +82,30 @@ export default function Navbar() {
               </nav>
             </div>
             <div className="col-lg-3">
-              <div className="top-option">
-                <div className="to-search search-switch">
+              <div className="top-option" style={{display:'flex', alignItems:'center', justifyContent:'flex-end', gap:'15px'}}>
+                <div className="auth-buttons d-none d-lg-flex" style={{alignItems:'center', gap:'8px'}}>
+                  <NavLink to="/login" className="primary-btn btn-sm">Login</NavLink>
+                  <NavLink to="/signup" className="primary-btn btn-sm btn-outline">Sign Up</NavLink>
+                </div>
+                <div className="to-search search-switch d-none d-lg-flex" style={{alignItems:'center'}}>
                   <i className="fa fa-search"></i>
                 </div>
-                <div className="to-social">
-                  <a href="#"><i className="fa fa-facebook"></i></a>
-                  <a href="#"><i className="fa fa-twitter"></i></a>
-                  <a href="#"><i className="fa fa-youtube-play"></i></a>
-                  <a href="#"><i className="fa fa-instagram"></i></a>
+                <div className="to-social d-none d-lg-flex" style={{alignItems:'center', gap:'8px'}}>
+                  <NavLink to="#"><i className="fa fa-facebook"></i></NavLink>
+                  <NavLink to="#"><i className="fa fa-twitter"></i></NavLink>
+                  <NavLink to="#"><i className="fa fa-youtube-play"></i></NavLink>
+                  <NavLink to="#"><i className="fa fa-instagram"></i></NavLink>
                 </div>
               </div>
             </div>
           </div>
           <div className="canvas-open">
             <i className="fa fa-bars"></i>
+          </div>
+          <div className="d-lg-none" style={{position:'absolute', right:'110px', top:'67px'}}>
+            <div className="to-search search-switch" style={{display:'flex', alignItems:'center', color:'#fff'}}>
+              <i className="fa fa-search"></i>
+            </div>
           </div>
         </div>
       </header>
