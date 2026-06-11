@@ -1,0 +1,21 @@
+import axios from 'axios';
+
+const API = axios.create({
+    baseURL: 'http://127.0.0.1:8000/api', // Tumhare Laravel backend ka URL
+    timeout: 10000, // Agar 10 seconds tak response na aaye toh request cancel ho jaye
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+    }
+    
+});
+API.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+}, (error) => {
+    return Promise.reject(error);
+});
+export default API;

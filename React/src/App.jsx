@@ -17,11 +17,14 @@ import Ourblog from "./Pages/Ourblog"
 import Blogdetails from "./Pages/Blogdetails"
 import Login from "./Pages/Login"
 import Signup from "./Pages/Signup"
-
-const noLayoutRoutes = ['/login', '/signup']
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const location = useLocation()
+
+  // Layout kin pages par hide karna hai
+  const noLayoutRoutes = ['/login', '/signup', '/member/dashboard', '/owner/dashboard']
   const hideLayout = noLayoutRoutes.includes(location.pathname)
 
   useEffect(() => {
@@ -32,7 +35,9 @@ function App() {
 
   return (
     <>
+      {/* Agar layout hide nahi karna, toh Navbar dikhao */}
       {!hideLayout && <Navbar />}
+
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/about-us" element={<About />} />
@@ -50,8 +55,28 @@ function App() {
         <Route path="/blog-details" element={<Blogdetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        
+        <Route
+          path="/member/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/owner/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-      {!hideLayout && <Footer/>}
+
+      {/* Agar layout hide nahi karna, toh Footer dikhao */}
+      {!hideLayout && <Footer />}
     </>
   )
 }

@@ -11,16 +11,16 @@ export default function Footer() {
                 <div className="col-lg-4">
                     <div className="fs-about">
                         <div className="fa-logo">
-                            <NavLink href="#"><img src="img/logo.png" alt=""/></NavLink>
+                            <NavLink to="#"><img src="img/logo.png" alt=""/></NavLink>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore dolore magna aliqua endisse ultrices gravida lorem.</p>
                         <div className="fa-social">
-                            <NavLink href="#"><i className="fa fa-facebook"></i></NavLink>
-                            <NavLink href="#"><i className="fa fa-twitter"></i></NavLink>
-                            <NavLink href="#"><i className="fa fa-youtube-play"></i></NavLink>
-                            <NavLink href="#"><i className="fa fa-instagram"></i></NavLink>
-                            <NavLink href="#"><i className="fa  fa-envelope-o"></i></NavLink>
+                            <NavLink to="#"><i className="fa fa-facebook"></i></NavLink>
+                            <NavLink to="#"><i className="fa fa-twitter"></i></NavLink>
+                            <NavLink to="#"><i className="fa fa-youtube-play"></i></NavLink>
+                            <NavLink to="#"><i className="fa fa-instagram"></i></NavLink>
+                            <NavLink to="#"><i className="fa  fa-envelope-o"></i></NavLink>
                         </div>
                     </div>
                 </div>
@@ -28,10 +28,10 @@ export default function Footer() {
                     <div className="fs-widget">
                         <h4>Useful links</h4>
                         <ul>
-                            <li><NavLink href="#">About</NavLink></li>
-                            <li><NavLink href="#">Blog</NavLink></li>
-                            <li><NavLink href="#">Classes</NavLink></li>
-                            <li><NavLink href="#">Contact</NavLink></li>
+                            <li><NavLink to="#">About</NavLink></li>
+                            <li><NavLink to="#">Blog</NavLink></li>
+                            <li><NavLink to="#">Classes</NavLink></li>
+                            <li><NavLink to="#">Contact</NavLink></li>
                         </ul>
                     </div>
                 </div>
@@ -39,10 +39,10 @@ export default function Footer() {
                     <div className="fs-widget">
                         <h4>Support</h4>
                         <ul>
-                            <li><NavLink href="#">Login</NavLink></li>
-                            <li><NavLink href="#">My account</NavLink></li>
-                            <li><NavLink href="#">Subscribe</NavLink></li>
-                            <li><NavLink href="#">Contact</NavLink></li>
+                            <li><NavLink to="#">Login</NavLink></li>
+                            <li><NavLink to="#">My account</NavLink></li>
+                            <li><NavLink to="#">Subscribe</NavLink></li>
+                            <li><NavLink to="#">Contact</NavLink></li>
                         </ul>
                     </div>
                 </div>
@@ -50,14 +50,14 @@ export default function Footer() {
                     <div className="fs-widget">
                         <h4>Tips & Guides</h4>
                         <div className="fw-recent">
-                            <h6><NavLink href="#">Physical fitness may help prevent depression, anxiety</NavLink></h6>
+                            <h6><NavLink to="#">Physical fitness may help prevent depression, anxiety</NavLink></h6>
                             <ul>
                                 <li>3 min read</li>
                                 <li>20 Comment</li>
                             </ul>
                         </div>
                         <div className="fw-recent">
-                            <h6><NavLink href="#">Fitness: The best exercise to lose belly fat and tone up...</NavLink></h6>
+                            <h6><NavLink to="#">Fitness: The best exercise to lose belly fat and tone up...</NavLink></h6>
                             <ul>
                                 <li>3 min read</li>
                                 <li>20 Comment</li>

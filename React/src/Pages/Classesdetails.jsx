@@ -14,8 +14,8 @@ export default function Classes() {
                     <div className="breadcrumb-text">
                         <h2>Classes detail</h2>
                         <div className="bt-option">
-                            <NavLink href="/">Home</NavLink>
-                            <NavLink href="#">Classes</NavLink>
+                            <NavLink to="/">Home</NavLink>
+                            <NavLink to="#">Classes</NavLink>
                             <span>Body building</span>
                         </div>
                     </div>
@@ -67,11 +67,11 @@ export default function Classes() {
                                             <span>Gym Trainer</span>
                                         </div>
                                         <div className="trainer-social">
-                                            <NavLink href="#"><i className="fa fa-facebook"></i></NavLink>
-                                            <NavLink href="#"><i className="fa fa-twitter"></i></NavLink>
-                                            <NavLink href="#"><i className="fa fa-youtube-play"></i></NavLink>
-                                            <NavLink href="#"><i className="fa fa-instagram"></i></NavLink>
-                                            <NavLink href="#"><i className="fa  fa-envelope-o"></i></NavLink>
+                                            <NavLink to="#"><i className="fa fa-facebook"></i></NavLink>
+                                            <NavLink to="#"><i className="fa fa-twitter"></i></NavLink>
+                                            <NavLink to="#"><i className="fa fa-youtube-play"></i></NavLink>
+                                            <NavLink to="#"><i className="fa fa-instagram"></i></NavLink>
+                                            <NavLink to="#"><i className="fa  fa-envelope-o"></i></NavLink>
                                         </div>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                                             tempor incididunt ut labore et dolore magna aliqua viverra maecenas lacus
@@ -96,19 +96,19 @@ export default function Classes() {
                         <div className="so-categories">
                             <h5 className="title">Categories</h5>
                             <ul>
-                                <li><NavLink href="#">Yoga <span>12</span></NavLink></li>
-                                <li><NavLink href="#">Runing <span>32</span></NavLink></li>
-                                <li><NavLink href="#">Weightloss <span>86</span></NavLink></li>
-                                <li><NavLink href="#">Cario <span>25</span></NavLink></li>
-                                <li><NavLink href="#">Body buiding <span>36</span></NavLink></li>
-                                <li><NavLink href="#">Nutrition <span>15</span></NavLink></li>
+                                <li><NavLink to="#">Yoga <span>12</span></NavLink></li>
+                                <li><NavLink to="#">Runing <span>32</span></NavLink></li>
+                                <li><NavLink to="#">Weightloss <span>86</span></NavLink></li>
+                                <li><NavLink to="#">Cario <span>25</span></NavLink></li>
+                                <li><NavLink to="#">Body buiding <span>36</span></NavLink></li>
+                                <li><NavLink to="#">Nutrition <span>15</span></NavLink></li>
                             </ul>
                         </div>
                         <div className="so-latest">
                             <h5 className="title">Latest posts</h5>
                             <div className="latest-large set-bg" data-setbg="img/letest-blog/latest-1.jpg">
                                 <div className="ll-text">
-                                    <h5><NavLink href="#">This Japanese Way of Making Iced Coffee Is a Game...</NavLink></h5>
+                                    <h5><NavLink to="#">This Japanese Way of Making Iced Coffee Is a Game...</NavLink></h5>
                                     <ul>
                                         <li>Aug 20, 2019</li>
                                         <li>20 Comment</li>
@@ -120,7 +120,7 @@ export default function Classes() {
                                     <img src="img/letest-blog/latest-2.jpg" alt=""/>
                                 </div>
                                 <div className="li-text">
-                                    <h6><NavLink href="#">Grilled Potato and Green Bean Salad</NavLink></h6>
+                                    <h6><NavLink to="#">Grilled Potato and Green Bean Salad</NavLink></h6>
                                     <span className="li-time">Aug 15, 2019</span>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ export default function Classes() {
                                     <img src="img/letest-blog/latest-3.jpg" alt=""/>
                                 </div>
                                 <div className="li-text">
-                                    <h6><NavLink href="#">The $8 French Rosé I Buy in Bulk Every Summer</NavLink></h6>
+                                    <h6><NavLink to="#">The $8 French Rosé I Buy in Bulk Every Summer</NavLink></h6>
                                     <span className="li-time">Aug 15, 2019</span>
                                 </div>
                             </div>
@@ -138,7 +138,7 @@ export default function Classes() {
                                     <img src="img/letest-blog/latest-4.jpg" alt=""/>
                                 </div>
                                 <div className="li-text">
-                                    <h6><NavLink href="#">Ina Garten's Skillet-Roasted Lemon Chicken</NavLink></h6>
+                                    <h6><NavLink to="#">Ina Garten's Skillet-Roasted Lemon Chicken</NavLink></h6>
                                     <span className="li-time">Aug 15, 2019</span>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@ export default function Classes() {
                                     <img src="img/letest-blog/latest-5.jpg" alt=""/>
                                 </div>
                                 <div className="li-text">
-                                    <h6><NavLink href="#">The Best Weeknight Baked Potatoes, 3 Creative Ways</NavLink></h6>
+                                    <h6><NavLink to="#">The Best Weeknight Baked Potatoes, 3 Creative Ways</NavLink></h6>
                                     <span className="li-time">Aug 15, 2019</span>
                                 </div>
                             </div>

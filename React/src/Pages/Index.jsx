@@ -13,7 +13,7 @@ export default function Index() {
                   <div className="hi-text">
                     <span>Shape your body</span>
                     <h1>Be <strong>strong</strong> traning hard</h1>
-                    <a href="#" className="primary-btn">Get info</a>
+                    <NavLink to="#" className="primary-btn">Get info</NavLink>
                   </div>
                 </div>
               </div>
@@ -26,7 +26,7 @@ export default function Index() {
                   <div className="hi-text">
                     <span>Shape your body</span>
                     <h1>Be <strong>strong</strong> traning hard</h1>
-                    <a href="#" className="primary-btn">Get info</a>
+                    <NavLink to="#" className="primary-btn">Get info</NavLink>
                   </div>
                 </div>
               </div>
@@ -99,7 +99,7 @@ export default function Index() {
                 <div className="ci-text">
                   <span>STRENGTH</span>
                   <h5>Weightlifting</h5>
-                  <a href="#"><i className="fa fa-angle-right"></i></a>
+                  <NavLink to="#"><i className="fa fa-angle-right"></i></NavLink>
                 </div>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function Index() {
                 <div className="ci-text">
                   <span>Cardio</span>
                   <h5>Indoor cycling</h5>
-                  <a href="#"><i className="fa fa-angle-right"></i></a>
+                  <NavLink to="#"><i className="fa fa-angle-right"></i></NavLink>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function Index() {
                 <div className="ci-text">
                   <span>STRENGTH</span>
                   <h5>Kettlebell power</h5>
-                  <a href="#"><i className="fa fa-angle-right"></i></a>
+                  <NavLink to="#"><i className="fa fa-angle-right"></i></NavLink>
                 </div>
               </div>
             </div>
@@ -129,7 +129,7 @@ export default function Index() {
                 <div className="ci-text">
                   <span>Cardio</span>
                   <h4>Indoor cycling</h4>
-                  <a href="#"><i className="fa fa-angle-right"></i></a>
+                  <NavLink to="#"><i className="fa fa-angle-right"></i></NavLink>
                 </div>
               </div>
             </div>
@@ -139,7 +139,7 @@ export default function Index() {
                 <div className="ci-text">
                   <span>Training</span>
                   <h4>Boxing</h4>
-                  <a href="#"><i className="fa fa-angle-right"></i></a>
+                  <NavLink to="#"><i className="fa fa-angle-right"></i></NavLink>
                 </div>
               </div>
             </div>
@@ -156,7 +156,7 @@ export default function Index() {
               <div className="bs-text">
                 <h2>registration now to get more deals</h2>
                 <div className="bt-tips">Where health, beauty and fitness meet.</div>
-                <a href="#" className="primary-btn btn-normal">Appointment</a>
+                <NavLink to="#" className="primary-btn btn-normal">Appointment</NavLink>
               </div>
             </div>
           </div>
@@ -191,8 +191,8 @@ export default function Index() {
                   <li>Month to mouth</li>
                   <li>No time restriction</li>
                 </ul>
-                <a href="#" className="primary-btn pricing-btn">Enroll now</a>
-                <a href="#" className="thumb-icon"><i className="fa fa-picture-o"></i></a>
+                <NavLink to="#" className="primary-btn pricing-btn">Enroll now</NavLink>
+                <NavLink to="#" className="thumb-icon"><i className="fa fa-picture-o"></i></NavLink>
               </div>
             </div>
             <div className="col-lg-4 col-md-8">
@@ -210,8 +210,8 @@ export default function Index() {
                   <li>Month to mouth</li>
                   <li>No time restriction</li>
                 </ul>
-                <a href="#" className="primary-btn pricing-btn">Enroll now</a>
-                <a href="#" className="thumb-icon"><i className="fa fa-picture-o"></i></a>
+                <NavLink to="#" className="primary-btn pricing-btn">Enroll now</NavLink>
+                <NavLink to="#" className="thumb-icon"><i className="fa fa-picture-o"></i></NavLink>
               </div>
             </div>
             <div className="col-lg-4 col-md-8">
@@ -229,8 +229,8 @@ export default function Index() {
                   <li>Month to mouth</li>
                   <li>No time restriction</li>
                 </ul>
-                <a href="#" className="primary-btn pricing-btn">Enroll now</a>
-                <a href="#" className="thumb-icon"><i className="fa fa-picture-o"></i></a>
+                <NavLink to="#" className="primary-btn pricing-btn">Enroll now</NavLink>
+                <NavLink to="#" className="thumb-icon"><i className="fa fa-picture-o"></i></NavLink>
               </div>
             </div>
           </div>
@@ -243,34 +243,34 @@ export default function Index() {
         <div className="gallery">
           <div className="grid-sizer"></div>
           <div className="gs-item grid-wide set-bg" data-setbg="img/gallery/gallery-1.jpg">
-            <a href="img/gallery/gallery-1.jpg" className="thumb-icon image-popup">
+            <NavLink to="img/gallery/gallery-1.jpg" className="thumb-icon image-popup">
               <i className="fa fa-picture-o"></i>
-            </a>
+            </NavLink>
           </div>
           <div className="gs-item set-bg" data-setbg="img/gallery/gallery-2.jpg">
-            <a href="img/gallery/gallery-2.jpg" className="thumb-icon image-popup">
+            <NavLink to="img/gallery/gallery-2.jpg" className="thumb-icon image-popup">
               <i className="fa fa-picture-o"></i>
-            </a>
+            </NavLink>
           </div>
           <div className="gs-item set-bg" data-setbg="img/gallery/gallery-3.jpg">
-            <a href="img/gallery/gallery-3.jpg" className="thumb-icon image-popup">
+            <NavLink to="img/gallery/gallery-3.jpg" className="thumb-icon image-popup">
               <i className="fa fa-picture-o"></i>
-            </a>
+            </NavLink>
           </div>
           <div className="gs-item set-bg" data-setbg="img/gallery/gallery-4.jpg">
-            <a href="img/gallery/gallery-4.jpg" className="thumb-icon image-popup">
+            <NavLink to="img/gallery/gallery-4.jpg" className="thumb-icon image-popup">
               <i className="fa fa-picture-o"></i>
-            </a>
+            </NavLink>
           </div>
           <div className="gs-item set-bg" data-setbg="img/gallery/gallery-5.jpg">
-            <a href="img/gallery/gallery-5.jpg" className="thumb-icon image-popup">
+            <NavLink to="img/gallery/gallery-5.jpg" className="thumb-icon image-popup">
               <i className="fa fa-picture-o"></i>
-            </a>
+            </NavLink>
           </div>
           <div className="gs-item grid-wide set-bg" data-setbg="img/gallery/gallery-6.jpg">
-            <a href="img/gallery/gallery-6.jpg" className="thumb-icon image-popup">
+            <NavLink to="img/gallery/gallery-6.jpg" className="thumb-icon image-popup">
               <i className="fa fa-picture-o"></i>
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -286,7 +286,7 @@ export default function Index() {
                   <span>Our Team</span>
                   <h2>TRAIN WITH EXPERTS</h2>
                 </div>
-                <a href="#" className="primary-btn btn-normal appoinment-btn">appointment</a>
+                <NavLink to="#" className="primary-btn btn-normal appoinment-btn">appointment</NavLink>
               </div>
             </div>
           </div>
