@@ -20,18 +20,16 @@ export default function Login() {
     setError('');
 
     try {
-      const response = await API.post('/login', { ...formData, portal: 'member' });
+      const response = await API.post('/login', formData);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      localStorage.setItem(
-  "role",
-  response.data.role
-);
+      localStorage.setItem('role', response.data.role);
       alert('Login Kamyab!');
       
       // Role check aur redirection
       if (response.data.role === 'member') navigate('/member/dashboard');
       else if (response.data.role === 'owner') navigate('/owner/dashboard');
+      else if (response.data.role === 'admin') navigate('/admin/dashboard');
       
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed.');

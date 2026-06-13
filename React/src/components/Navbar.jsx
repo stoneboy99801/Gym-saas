@@ -1,7 +1,30 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
+import { useMemo } from 'react'
 import logo from '../assets/img/logo.png'
 
 export default function Navbar() {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const token = localStorage.getItem('token')
+  const role = localStorage.getItem('role')
+
+  const dashboardPath = useMemo(() => {
+    if (role === 'admin') return '/admin/dashboard'
+    if (role === 'owner') return '/owner/dashboard'
+    return '/member/dashboard'
+  }, [role])
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    localStorage.removeItem('role')
+    navigate('/login')
+  }
+
+  const navLinkClass = ({ isActive }) => (isActive ? 'active' : '')
+
+  const isPagesOpen = ['/about-us', '/class-details', '/classes', '/class-timetable', '/bmi-calculator', '/team', '/gallery', '/blog', '/404'].includes(location.pathname)
+
   return (
     <>
       <div id="preloder">
@@ -18,12 +41,12 @@ export default function Navbar() {
         </div>
         <nav className="canvas-menu mobile-menu">
           <ul>
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/about-us">About Us</NavLink></li>
-            <li><NavLink to="/classes">Classes</NavLink></li>
-            <li><NavLink to="/services">Services</NavLink></li>
-            <li><NavLink to="/team">Our Team</NavLink></li>
-            <li><NavLink to="#">Pages</NavLink>
+            <li><NavLink to="/" className={navLinkClass}>Home</NavLink></li>
+            <li><NavLink to="/about-us" className={navLinkClass}>About Us</NavLink></li>
+            <li><NavLink to="/classes" className={navLinkClass}>Classes</NavLink></li>
+            <li><NavLink to="/services" className={navLinkClass}>Services</NavLink></li>
+            <li><NavLink to="/team" className={navLinkClass}>Our Team</NavLink></li>
+            <li><NavLink to="#" className={isPagesOpen ? 'active' : ''}>Pages</NavLink>
               <ul className="dropdown">
                 <li><NavLink to="/about-us">About us</NavLink></li>
                 <li><NavLink to="/class-timetable">Classes timetable</NavLink></li>
@@ -34,13 +57,22 @@ export default function Navbar() {
                 <li><NavLink to="/404">404</NavLink></li>
               </ul>
             </li>
-            <li><NavLink to="/contact">Contact</NavLink></li>
+            <li><NavLink to="/contact" className={navLinkClass}>Contact</NavLink></li>
           </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
-        <div className="canvas-social" style={{marginBottom:'15px'}}>
-          <NavLink to="/login" className="primary-btn btn-sm" style={{marginRight:'8px'}}>Login</NavLink>
-          <NavLink to="/signup" className="primary-btn btn-sm btn-outline">Sign Up</NavLink>
+        <div className="canvas-social" style={{marginBottom:'15px', display:'flex', gap:'8px', flexWrap:'wrap'}}>
+          {token ? (
+            <>
+              <NavLink to={dashboardPath} className="primary-btn btn-sm">Dashboard</NavLink>
+              <button type="button" className="primary-btn btn-sm btn-outline" onClick={handleLogout}>Logout</button>
+            </>
+          ) : (
+            <>
+              <NavLink to="/login" className="primary-btn btn-sm">Login</NavLink>
+              <NavLink to="/signup" className="primary-btn btn-sm btn-outline">Sign Up</NavLink>
+            </>
+          )}
         </div>
         <div className="canvas-social">
           <NavLink to="#"><i className="fa fa-facebook"></i></NavLink>
@@ -61,12 +93,12 @@ export default function Navbar() {
             <div className="col-lg-6">
               <nav className="nav-menu">
                 <ul>
-                  <li className="active"><NavLink to="/">Home</NavLink></li>
-                  <li><NavLink to="/about-us">About Us</NavLink></li>
-                  <li><NavLink to="/classes">Classes</NavLink></li>
-                  <li><NavLink to="/services">Services</NavLink></li>
-                  <li><NavLink to="/team">Our Team</NavLink></li>
-                  <li><NavLink to="#">Pages</NavLink>
+                  <li><NavLink to="/" className={navLinkClass} end>Home</NavLink></li>
+                  <li><NavLink to="/about-us" className={navLinkClass}>About Us</NavLink></li>
+                  <li><NavLink to="/classes" className={navLinkClass}>Classes</NavLink></li>
+                  <li><NavLink to="/services" className={navLinkClass}>Services</NavLink></li>
+                  <li><NavLink to="/team" className={navLinkClass}>Our Team</NavLink></li>
+                  <li><NavLink to="#" className={isPagesOpen ? 'active' : ''}>Pages</NavLink>
                     <ul className="dropdown">
                       <li><NavLink to="/about-us">About us</NavLink></li>
                       <li><NavLink to="/class-timetable">Classes timetable</NavLink></li>
@@ -77,15 +109,24 @@ export default function Navbar() {
                       <li><NavLink to="/404">404</NavLink></li>
                     </ul>
                   </li>
-                  <li><NavLink to="/contact">Contact</NavLink></li>
+                  <li><NavLink to="/contact" className={navLinkClass}>Contact</NavLink></li>
                 </ul>
               </nav>
             </div>
             <div className="col-lg-3">
               <div className="top-option" style={{display:'flex', alignItems:'center', justifyContent:'flex-end', gap:'15px'}}>
                 <div className="auth-buttons d-none d-lg-flex" style={{alignItems:'center', gap:'8px'}}>
-                  <NavLink to="/login" className="primary-btn btn-sm">Login</NavLink>
-                  <NavLink to="/signup" className="primary-btn btn-sm btn-outline">Sign Up</NavLink>
+                  {token ? (
+                    <>
+                      <NavLink to={dashboardPath} className="primary-btn btn-sm">Dashboard</NavLink>
+                      <button type="button" className="primary-btn btn-sm btn-outline" onClick={handleLogout}>Logout</button>
+                    </>
+                  ) : (
+                    <>
+                      <NavLink to="/login" className="primary-btn btn-sm">Login</NavLink>
+                      <NavLink to="/signup" className="primary-btn btn-sm btn-outline">Sign Up</NavLink>
+                    </>
+                  )}
                 </div>
                 <div className="to-search search-switch d-none d-lg-flex" style={{alignItems:'center'}}>
                   <i className="fa fa-search"></i>

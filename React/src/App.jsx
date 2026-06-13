@@ -17,7 +17,7 @@ import Ourblog from "./Pages/Ourblog"
 import Blogdetails from "./Pages/Blogdetails"
 import Login from "./Pages/Login"
 import Signup from "./Pages/Signup"
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./Pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -25,7 +25,13 @@ function App() {
 
   // Layout kin pages par hide karna hai
   const noLayoutRoutes = ['/login', '/signup', '/member/dashboard', '/owner/dashboard']
-  const hideLayout = noLayoutRoutes.includes(location.pathname)
+  // Layout kin pages par hide karna hai
+  const hideLayout =
+    location.pathname === '/login' ||
+    location.pathname === '/signup' ||
+    location.pathname.startsWith('/member') ||
+    location.pathname.startsWith('/owner') ||
+    location.pathname.startsWith('/admin')
 
   useEffect(() => {
     setTimeout(() => {
@@ -59,7 +65,7 @@ function App() {
         <Route
           path="/member/dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["member", "admin"]}>
               <Dashboard />
             </ProtectedRoute>
           }
@@ -68,7 +74,16 @@ function App() {
         <Route
           path="/owner/dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["owner", "admin"]}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
               <Dashboard />
             </ProtectedRoute>
           }

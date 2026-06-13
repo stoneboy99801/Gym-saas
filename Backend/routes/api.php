@@ -4,7 +4,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CheckInController;
 use App\Http\Controllers\GymController;
 use App\Http\Controllers\OwnerController;
+use App\Models\CheckIn;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Models\Gym;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('throttle:5,1')->post('/login', [AuthController::class, 'login']);
 Route::post('/signup', [AuthController::class, 'signup']);
 
+Route::middleware('auth:sanctum')->get('/dashboard-config', function (Request $request) {
+    $user = $request->user();
+    return response()->json([
+        'role' => $user->role,
+        // Yahan 'gym_owner_id' check karo kyunki controller mein yahi hai
+        'gyms' => $user->role === 'owner' ? Gym::where('gym_owner_id', $user->id)->latest()->get() : [],
+    ]);
+});
 /*
 |--------------------------------------------------------------------------
 | Protected Routes (Token Hona Lazmi Hai)
@@ -32,6 +44,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/gyms', [GymController::class, 'index']);
         Route::post('/check-in', [CheckInController::class, 'store']);
         Route::get('/check-in/history', [CheckInController::class, 'history']);
+        Route::get('/check-in/attendance-summary', [CheckInController::class, 'attendanceSummary']);
     });
 
     // 2. 🟠 Gym Owner Ke Khusoosi Routes (Sirf 'owner' ability allowed)
@@ -45,12 +58,30 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/gyms', [OwnerController::class, 'store']);          
         Route::put('/gyms/{gym}', [OwnerController::class, 'update']);     
         Route::delete('/gyms/{gym}', [OwnerController::class, 'destroy']); 
+        Route::get('/gyms/{id}/qr', [GymController::class, 'getGymQR']);
     });
 
     // 3. 🔴 Super Admin Ke Khusoosi Routes (Sirf 'admin' ability allowed)
     Route::middleware('abilities:admin')->prefix('admin')->group(function () {
         Route::get('/dashboard', function() {
-            return response()->json(['message' => 'Welcome to Super Admin Master Control']);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Welcome to Super Admin Master Control',
+                'stats' => [
+                    'members' => User::where('role', 'member')->count(),
+                    'owners' => User::where('role', 'owner')->count(),
+                    'admins' => User::where('role', 'admin')->count(),
+                    'gyms' => Gym::count(),
+                    'check_ins' => CheckIn::count(),
+                ],
+                'recent_check_ins' => CheckIn::with([
+                    'gym:id,gym_name',
+                    'user:id,name,email',
+                ])
+                ->latest('checked_in_at')
+                ->take(8)
+                ->get(),
+            ]);
         });
     });
     

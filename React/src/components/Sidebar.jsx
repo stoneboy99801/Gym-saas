@@ -2,71 +2,74 @@
 
 import { useNavigate } from "react-router-dom";
 
-const Sidebar = ({ role }) => {
+const Sidebar = ({ role, activeSection, onSectionChange }) => {
   const navigate = useNavigate();
+  const roleLabel =
+    role === "admin" ? "Super Admin" : role === "owner" ? "Gym Owner" : "Member";
+
+  const sectionItems = {
+    member: [
+      { key: "dashboard", label: "Dashboard" },
+      { key: "scan-qr", label: "Scan QR / Check-In" },
+      { key: "attendance", label: "Attendance History" },
+      { key: "membership", label: "My Membership" },
+    ],
+    owner: [
+      { key: "dashboard", label: "Dashboard" },
+      { key: "my-gyms", label: "My Gyms" },
+      { key: "qr-center", label: "QR Print Center" },
+      { key: "recent-checkins", label: "Recent Check-Ins" },
+    ],
+    admin: [
+      { key: "dashboard", label: "Dashboard" },
+      { key: "overview", label: "System Overview" },
+      { key: "members", label: "Members" },
+      { key: "owners", label: "Owners" },
+      { key: "gyms", label: "Gyms" },
+    ],
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("role");
 
     navigate("/login");
   };
 
-  const styles = {
-    sidebar: {
-      width: "250px",
-      minHeight: "100vh",
-      background: "rgba(0,0,0,0.75)",
-      borderRight: "1px solid #f34e3a",
-      padding: "20px",
-      color: "#fff",
-    },
-
-    title: {
-      color: "#f34e3a",
-      fontSize: "24px",
-      fontWeight: "bold",
-      marginBottom: "30px",
-    },
-
-    item: {
-      padding: "12px",
-      marginBottom: "10px",
-      borderRadius: "4px",
-      cursor: "pointer",
-      background: "#111",
-    },
-
-    logout: {
-      padding: "12px",
-      marginTop: "20px",
-      borderRadius: "4px",
-      cursor: "pointer",
-      background: "#f34e3a",
-      color: "#fff",
-      border: "none",
-      width: "100%",
-    },
+  const handleGoHome = () => {
+    navigate("/");
   };
 
   return (
-    <div style={styles.sidebar}>
-      <h2 style={styles.title}>Gym System</h2>
+    <div className="dashboard-sidebar">
+      <div className="dashboard-sidebar__head">
+        <p className="dashboard-sidebar__eyebrow">GymLife SaaS</p>
+        <h2>Control Center</h2>
+        <span className="dashboard-role-pill">{roleLabel}</span>
+      </div>
 
-      <div style={styles.item}>Dashboard</div>
+      <div className="dashboard-sidebar__nav">
+        {(sectionItems[role] || sectionItems.member).map((item) => (
+          <button
+            key={item.key}
+            type="button"
+            className={`sidebar-item ${activeSection === item.key ? "active" : ""}`}
+            onClick={() => onSectionChange(item.key)}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
 
-      <div style={styles.item}>My Gyms</div>
-
-      {role === "member" && (
-        <div style={styles.item}>Check-in History</div>
-      )}
-
-      <button
-        style={styles.logout}
-        onClick={handleLogout}
-      >
-        Logout
-      </button>
+      <div className="dashboard-sidebar__footer">
+        <button type="button" className="sidebar-item sidebar-item--footer" onClick={handleGoHome}>
+          Go Home
+        </button>
+        <button type="button" className="sidebar-item sidebar-item--footer sidebar-item--logout" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
     </div>
   );
 };

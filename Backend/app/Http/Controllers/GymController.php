@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gym;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 
 class GymController extends Controller
 {
@@ -31,4 +33,15 @@ class GymController extends Controller
             'data' => $gyms
         ], 200);
     }
+    public function getGymQR($id) {
+    $gym = Gym::findOrFail($id);
+    
+    // QR Code mein gym ka ID bhej rahe hain
+    // Jab member scan karega, toh yahi ID backend mein check-in ke liye jayega
+    $qrData = json_encode(['gym_id' => $gym->id]);
+    
+    // QR Code generate karo (image format mein)
+    return response(QrCode::format('png')->size(300)->generate($qrData))
+        ->header('Content-Type', 'image/png');
+}
 }

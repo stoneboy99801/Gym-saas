@@ -15,7 +15,6 @@ export default function Signup() {
     email: '',
     password: '',
     password_confirmation: '',
-    portal: 'member'
   });
 
   const handleChange = (e) => {
@@ -47,6 +46,10 @@ export default function Signup() {
         </div>
 
         {error && <p style={{ color: '#ff4d4d', textAlign: 'center', marginBottom: '15px' }}>{error}</p>}
+
+        <p style={{ color: '#ccc', textAlign: 'center', marginBottom: '18px', fontSize: '13px' }}>
+          New accounts are created as <strong style={{ color: '#fff' }}>Member</strong> by default.
+        </p>
 
         <form onSubmit={handleSubmit}>
           {/* Name Field (First + Last ko handle karne ke liye simple input) */}
