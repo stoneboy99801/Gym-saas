@@ -1,14 +1,16 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CheckInController;
 use App\Http\Controllers\GymController;
 use App\Http\Controllers\OwnerController;
 use App\Models\CheckIn;
-use App\Models\User;
-use Illuminate\Support\Facades\Route;
 use App\Models\Gym;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -62,27 +64,15 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     // 3. 🔴 Super Admin Ke Khusoosi Routes (Sirf 'admin' ability allowed)
-    Route::middleware('abilities:admin')->prefix('admin')->group(function () {
-        Route::get('/dashboard', function() {
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Welcome to Super Admin Master Control',
-                'stats' => [
-                    'members' => User::where('role', 'member')->count(),
-                    'owners' => User::where('role', 'owner')->count(),
-                    'admins' => User::where('role', 'admin')->count(),
-                    'gyms' => Gym::count(),
-                    'check_ins' => CheckIn::count(),
-                ],
-                'recent_check_ins' => CheckIn::with([
-                    'gym:id,gym_name',
-                    'user:id,name,email',
-                ])
-                ->latest('checked_in_at')
-                ->take(8)
-                ->get(),
-            ]);
-        });
+     Route::middleware('abilities:admin')->prefix('admin')->group(function () {
+        Route::get('/dashboard',        [AdminController::class, 'dashboard']);
+        Route::get('/members',          [AdminController::class, 'members']);
+        Route::patch('/members/{id}',   [AdminController::class, 'updateMember']);
+        Route::delete('/members/{id}',  [AdminController::class, 'deleteMember']);
+        Route::get('/owners',           [AdminController::class, 'owners']);
+        Route::delete('/owners/{id}',   [AdminController::class, 'deleteOwner']);
+        Route::get('/gyms',             [AdminController::class, 'gyms']);
+        Route::delete('/gyms/{id}',     [AdminController::class, 'deleteGym']);
     });
     
 });

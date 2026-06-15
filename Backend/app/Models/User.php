@@ -48,4 +48,8 @@ protected $casts = [
     'subscription_expiry' => 'datetime',
     'is_active' => 'boolean',
 ];
+  public function gyms()
+    {
+        return $this->hasMany(Gym::class, 'gym_owner_id');
+    }
 }

@@ -15,8 +15,8 @@ class Gym extends Model
         'area', 
         'allowed_tier'
     ];
-    public function owner()
+   public function owner()
     {
-        return $this->belongsTo(GymOwner::class, 'gym_owner_id');
+        return $this->belongsTo(User::class, 'gym_owner_id');
     }
 }

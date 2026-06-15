@@ -65,4 +65,34 @@ class CheckInController extends Controller
             ], 201);
         });
     }
+      public function history(Request $request)
+    {
+        $history = CheckIn::with('gym')
+            ->where('user_id', $request->user()->id)
+            ->orderBy('checked_in_at', 'desc')
+            ->get();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $history
+        ], 200);
+    }
+
+    public function attendanceSummary(Request $request)
+    {
+        $userId = $request->user()->id;
+
+        $summary = DB::table('check_ins')
+            ->join('gyms', 'check_ins.gym_id', '=', 'gyms.id')
+            ->where('check_ins.user_id', $userId)
+            ->selectRaw('gyms.id as gym_id, gyms.gym_name, COUNT(DISTINCT DATE(check_ins.checked_in_at)) as total_days, MAX(check_ins.checked_in_at) as last_visit')
+            ->groupBy('gyms.id', 'gyms.gym_name')
+            ->orderByDesc('total_days')
+            ->get();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $summary
+        ], 200);
+    }
 }
