@@ -63,7 +63,7 @@ class AdminController extends Controller
 
         return response()->json([
             'status'  => 'success',
-            'message' => 'Member update ho gaya!',
+            'message' => 'Member updated successfully!',
             'data'    => $member
         ]);
     }
@@ -76,7 +76,7 @@ class AdminController extends Controller
 
         return response()->json([
             'status'  => 'success',
-            'message' => 'Member delete ho gaya!'
+            'message' => 'Member deleted successfully!'
         ]);
     }
 
@@ -94,6 +94,56 @@ class AdminController extends Controller
             'data'   => $owners
         ]);
     }
+// ── 5b. OWNER CREATE ─────────────────────────────────────
+public function createOwner(Request $request)
+{
+    // 1. Validation — signup jaisi hi, lekin role hum khud fix karenge
+    $request->validate([
+        'name'     => 'required|string|max:255',
+        'email'    => 'required|email',
+        'password' => ['required', 'confirmed', Password::min(6)],
+    ]);
+
+    // 2. Email pehle se kisi aur account (member/owner/admin) ka to nahi
+    $emailExists = User::where('email', $request->email)->exists();
+
+    if ($emailExists) {
+        return response()->json([
+            'status'  => 'error',
+            'message' => 'Yeh email pehle se registered hai.'
+        ], 422);
+    }
+
+    // 3. Owner account banao — role hardcode 'owner' hai, request se nahi aa raha
+    //    (isi se ye route secure hai — koi bhi khud ko owner nahi bana sakta)
+    $owner = User::create([
+        'name'      => $request->name,
+        'email'     => $request->email,
+        'password'  => Hash::make($request->password),
+        'role'      => 'owner',
+        'is_active' => true,
+    ]);
+
+    return response()->json([
+        'status'  => 'success',
+        'message' => 'Naya owner account ban gaya!',
+        'data'    => [
+            'id'    => $owner->id,
+            'name'  => $owner->name,
+            'email' => $owner->email,
+        ],
+    ], 201);
+}
+
+
+
+
+
+
+
+
+
+
 
     // ── 6. OWNER DELETE ─────────────────────────────────────
     public function deleteOwner($id)
@@ -103,7 +153,7 @@ class AdminController extends Controller
 
         return response()->json([
             'status'  => 'success',
-            'message' => 'Owner aur uske gyms delete ho gaye!'
+            'message' => 'Owner and their gyms deleted successfully!'
         ]);
     }
 
@@ -128,7 +178,7 @@ class AdminController extends Controller
 
         return response()->json([
             'status'  => 'success',
-            'message' => 'Gym delete ho gai!'
+            'message' => 'Gym deleted successfully!'
         ]);
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\CheckIn;
 use App\Models\Gym;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\GymController;
 
 class CheckInController extends Controller
 {
@@ -22,18 +23,24 @@ class CheckInController extends Controller
             if (!$user->is_active || !$user->subscription_expiry || now()->greaterThan($user->subscription_expiry)) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'Membership inactive ya expire ho chuki hai.'
+                    'message' => 'Membership is inactive or has expired.'
                 ], 403);
             }
 
             $gym = Gym::find($request->gym_id);
 
-            // 2. Updated Tier Security Check
-            // Agar user ka tier null hai, toh default 'basic' consider hoga
-            if (($user->tier ?? 'basic') === 'basic' && $gym->allowed_tier !== 'basic') {
+            // 2. Tier Hierarchy Security Check
+            // basic=1, intermediate=2, pro=3 — member ka level gym ke required
+            // level se kam nahi hona chahiye. Ye check GymController ke
+            // TIER_LEVELS se hi consistent hai, taake list aur check-in dono
+            // jagah wahi rule lage (chahe koi seedha QR scan hi kyun na kare).
+            $userLevel = GymController::TIER_LEVELS[$user->tier ?? 'basic'] ?? 1;
+            $gymLevel = GymController::TIER_LEVELS[$gym->allowed_tier] ?? 1;
+
+            if ($userLevel < $gymLevel) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'Access Denied! Aapka basic package is high-tier gym ko allow nahi karta.'
+                    'message' => "Access denied! Your '{$user->tier}' package is not allowed for this gym ({$gym->allowed_tier} tier)."
                 ], 403);
             }
 
@@ -47,7 +54,7 @@ class CheckInController extends Controller
             if ($alreadyCheckedIn) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'Aap pehle hi is gym mein check-in kar chuke hain! Dobara check-in ke liye 1 ghanta intezar karein.'
+                    'message' => 'You have already checked in to this gym! Please wait 1 hour before checking in again.'
                 ], 400);
             }
 
@@ -60,7 +67,7 @@ class CheckInController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Gym mein check-in kamyab!',
+                'message' => 'Check-in successful at the gym!',
                 'data' => $checkIn
             ], 201);
         });

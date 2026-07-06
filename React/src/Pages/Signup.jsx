@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import logo from '../assets/img/logo.png';
 import API from '../utils/api';
@@ -28,7 +28,6 @@ export default function Signup() {
     
     try {
       await API.post('/signup', formData);
-      alert('Signup Kamyab! Ab Login karein.');
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Signup failed.');
@@ -52,7 +51,6 @@ export default function Signup() {
         </p>
 
         <form onSubmit={handleSubmit}>
-          {/* Name Field (First + Last ko handle karne ke liye simple input) */}
           <div style={{marginBottom:'12px'}}>
             <input type="text" name="name" placeholder="Full Name" onChange={handleChange} required style={{ width:'100%', height:'44px', padding:'0 15px', background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.3)', color:'#fff', outline:'none', borderRadius:'3px' }}/>
           </div>
@@ -60,7 +58,6 @@ export default function Signup() {
             <input type="email" name="email" placeholder="Email Address" onChange={handleChange} required style={{ width:'100%', height:'44px', padding:'0 15px', background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.3)', color:'#fff', outline:'none', borderRadius:'3px' }}/>
           </div>
           
-          {/* Password Fields */}
           <div style={{marginBottom:'12px', position:'relative'}}>
             <input type={showPassword ? "text" : "password"} name="password" placeholder="Password" onChange={handleChange} required style={{ width:'100%', height:'44px', padding:'0 45px 0 15px', background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.3)', color:'#fff', borderRadius:'3px' }}/>
           </div>
@@ -73,7 +70,6 @@ export default function Signup() {
           </button>
         </form>
 
-        {/* Divider & Socials wapas aa gaye */}
         <div style={{display:'flex', alignItems:'center', margin:'20px 0'}}>
           <div style={{flex:1, height:'1px', background:'rgba(255,255,255,0.2)'}}></div>
           <span style={{color:'#ccc', padding:'0 10px', fontSize:'13px'}}>OR</span>
@@ -90,5 +86,5 @@ export default function Signup() {
         </p>
       </div>
     </div>
-  )
+  );
 }

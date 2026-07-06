@@ -17,6 +17,8 @@ import Ourblog from "./Pages/Ourblog"
 import Blogdetails from "./Pages/Blogdetails"
 import Login from "./Pages/Login"
 import Signup from "./Pages/Signup"
+import ForgotPassword from "./Pages/ForgotPassword"
+import ResetPassword from "./Pages/ResetPassword"
 import Dashboard from "./Pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -29,6 +31,8 @@ function App() {
   const hideLayout =
     location.pathname === '/login' ||
     location.pathname === '/signup' ||
+    location.pathname === '/forgot-password' ||
+    location.pathname === '/reset-password' ||
     location.pathname.startsWith('/member') ||
     location.pathname.startsWith('/owner') ||
     location.pathname.startsWith('/admin')
@@ -61,6 +65,8 @@ function App() {
         <Route path="/blog-details" element={<Blogdetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         
         <Route
           path="/member/dashboard"

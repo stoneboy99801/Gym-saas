@@ -1,6 +1,5 @@
 import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { useMemo } from 'react'
-import logo from '../assets/img/logo.png'
 
 export default function Navbar() {
   const navigate = useNavigate()
@@ -87,7 +86,12 @@ export default function Navbar() {
           <div className="row">
             <div className="col-lg-3">
               <div className="logo">
-                <NavLink to="/"><img src={logo} alt="" /></NavLink>
+                <NavLink to="/" className="brand-logo" aria-label="GymHub home">
+                  <span className="brand-logo__mark"><span>GH</span></span>
+                  <span className="brand-logo__text">
+                    Gym<span>Hub</span>
+                  </span>
+                </NavLink>
               </div>
             </div>
             <div className="col-lg-6">

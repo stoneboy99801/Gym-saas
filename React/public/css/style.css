@@ -363,12 +363,54 @@ ol {
 }
 
 .logo a {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
 }
 
-.logo img {
-	max-width: 140px;
-	height: auto;
+.brand-logo {
+	gap: 10px;
+	text-decoration: none;
+}
+
+.brand-logo:hover,
+.brand-logo:focus {
+	text-decoration: none;
+}
+
+.brand-logo__mark {
+	width: 42px;
+	height: 42px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: #f36100;
+	color: #ffffff;
+	font-family: "Oswald", sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1;
+	text-transform: uppercase;
+	transform: skew(-10deg);
+	box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.08);
+}
+
+.brand-logo__mark span {
+	display: inline-block;
+	transform: skew(10deg);
+}
+
+.brand-logo__text {
+	color: #ffffff;
+	font-family: "Oswald", sans-serif;
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: 0;
+}
+
+.brand-logo__text span {
+	color: #f36100;
 }
 
 .nav-menu {

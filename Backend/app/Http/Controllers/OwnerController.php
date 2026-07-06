@@ -71,7 +71,7 @@ class OwnerController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Naya Gym Kamyabi Se Add Ho Gaya! Asif Bhai Rocks.',
+            'message' => 'New gym added successfully!',
             'gym' => $gym
         ], 201); // 201 means "Created"
     }
@@ -102,7 +102,7 @@ public function gymsList(Request $request)
         if (!$gym) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Gym nahi mila, boss!'
+                'message' => 'Gym not found.'
             ], 404);
         }
 
@@ -110,7 +110,7 @@ public function gymsList(Request $request)
         if ($gym->gym_owner_id !== $owner->id) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Ghabrao nahi, par aap kisi dusre ke gym ko edit nahi kar sakte!'
+                'message' => 'You cannot edit another owner\'s gym.'
             ], 403); 
         }
 
@@ -127,7 +127,7 @@ public function gymsList(Request $request)
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Gym ki details makkhan ki tarah update ho gayeen!',
+            'message' => 'Gym details updated successfully!',
             'gym' => $gym
         ], 200);
     }
@@ -142,7 +142,7 @@ public function gymsList(Request $request)
         if (!$gym) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Gym pehle hi gayab hai!'
+                'message' => 'Gym does not exist.'
             ], 404);
         }
 
@@ -150,7 +150,7 @@ public function gymsList(Request $request)
         if ($gym->gym_owner_id !== $owner->id) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Badmashi nahi! Aap yeh gym delete nahi kar sakte.'
+                'message' => 'You cannot delete this gym.'
             ], 403);
         }
 
@@ -159,7 +159,7 @@ public function gymsList(Request $request)
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Gym kamyabi se delete ho gaya!'
+            'message' => 'Gym deleted successfully!'
         ], 200);
     }
 }

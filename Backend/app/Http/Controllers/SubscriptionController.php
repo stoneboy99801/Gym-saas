@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use App\Models\User;
 
@@ -26,7 +27,7 @@ class SubscriptionController extends Controller
             if (($user->role ?? null) !== 'member') {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'Sirf members subscription purchase kar sakte hain.'
+                    'message' => 'Only members can purchase subscriptions.'
                 ], 403);
             }
 
@@ -44,9 +45,22 @@ class SubscriptionController extends Controller
                 'subscription_expiry' => $expiry,
             ]);
 
+            // Confirmation email
+            Mail::raw(
+                "Hi {$user->name},\n\n" .
+                "Your GymLife {$plan} membership is now active!\n" .
+                "Valid until: {$expiry->format('d M Y')}\n\n" .
+                "Enjoy unlimited gym access.\n\n" .
+                "— GymLife Team",
+                function ($message) use ($user, $plan) {
+                    $message->to($user->email)
+                            ->subject('GymLife — Membership Activated ✓');
+                }
+            );
+
             return response()->json([
                 'status' => 'success',
-                'message' => 'Mock payment successful. Membership active ho gayi!',
+                'message' => 'Mock payment successful. Membership is now active!',
                 'data' => [
                     'tier' => $user->tier,
                     'is_active' => $user->is_active,
