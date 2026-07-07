@@ -78,16 +78,12 @@ class OwnerController extends Controller
 // 🌟 Naya function: Owner ke saare gyms ki list lane ke liye
 public function gymsList(Request $request)
 {
-    // 1. Token se logged-in owner ka data lena
     $owner = $request->user();
 
-    // 2. Database se sirf is owner ke saare gyms nikalna
     $gyms = Gym::where('gym_owner_id', $owner->id)->get();
 
-    // 3. Simple aur saaf response wapas bhejna
     return response()->json([
         'status' => 'success',
-        'total_gyms' => $gyms->count(),
         'gyms' => $gyms
     ], 200);
 }

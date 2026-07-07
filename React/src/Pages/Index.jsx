@@ -6,27 +6,27 @@ export default function Index() {
       {/* Hero Section Begin */}
       <section className="hero-section">
         <div className="hs-slider owl-carousel">
-          <div className="hs-item set-bg" data-setbg="img/hero/hero-1.jpg">
+          <div className="hs-item set-bg" data-setbg="img/hero/4722374.jpg">
             <div className="container">
               <div className="row">
                 <div className="col-lg-6 offset-lg-6">
                   <div className="hi-text">
-                    <span>Shape your body</span>
-                    <h1>Be <strong>strong</strong> traning hard</h1>
-                    <NavLink to="#" className="primary-btn">Get info</NavLink>
+                    <span>One Membership. Every Gym.</span>
+                    <h1>Access <strong>Any Gym</strong> in the City</h1>
+                    <NavLink to="/signup" className="primary-btn">Get Started</NavLink>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="hs-item set-bg" data-setbg="img/hero/hero-2.jpg">
+          <div className="hs-item set-bg" data-setbg="img/hero/4722377.jpg">
             <div className="container">
               <div className="row">
                 <div className="col-lg-6 offset-lg-6">
                   <div className="hi-text">
-                    <span>Shape your body</span>
-                    <h1>Be <strong>strong</strong> traning hard</h1>
-                    <NavLink to="#" className="primary-btn">Get info</NavLink>
+                    <span>Train Anywhere, Anytime</span>
+                    <h1>Your City is <strong>Your Gym</strong></h1>
+                    <NavLink to="/signup" className="primary-btn">Join Now</NavLink>
                   </div>
                 </div>
               </div>
@@ -42,8 +42,8 @@ export default function Index() {
           <div className="row">
             <div className="col-lg-12">
               <div className="section-title">
-                <span>Why chose us?</span>
-                <h2>PUSH YOUR LIMITS FORWARD</h2>
+                <span>Why GymHub?</span>
+                <h2>ONE MEMBERSHIP, UNLIMITED ACCESS</h2>
               </div>
             </div>
           </div>
@@ -51,29 +51,29 @@ export default function Index() {
             <div className="col-lg-3 col-sm-6">
               <div className="cs-item">
                 <span className="flaticon-034-stationary-bike"></span>
-                <h4>Modern equipment</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut dolore facilisis.</p>
-              </div>
-            </div>
-            <div className="col-lg-3 col-sm-6">
-              <div className="cs-item">
-                <span className="flaticon-033-juice"></span>
-                <h4>Healthy nutrition plan</h4>
-                <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                <h4>Multi-Gym Access</h4>
+                <p>One membership gives you access to all registered gyms in the city. Walk in, scan your QR, and train.</p>
               </div>
             </div>
             <div className="col-lg-3 col-sm-6">
               <div className="cs-item">
                 <span className="flaticon-002-dumbell"></span>
-                <h4>Proffesponal training plan</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut dolore facilisis.</p>
+                <h4>Instant QR Check-In</h4>
+                <p>No cards, no paperwork. Just show your QR code at any partner gym and you're in within seconds.</p>
               </div>
             </div>
             <div className="col-lg-3 col-sm-6">
               <div className="cs-item">
                 <span className="flaticon-014-heart-beat"></span>
-                <h4>Unique to your needs</h4>
-                <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                <h4>Track Your Attendance</h4>
+                <p>View your full check-in history across all gyms from your personal dashboard anytime.</p>
+              </div>
+            </div>
+            <div className="col-lg-3 col-sm-6">
+              <div className="cs-item">
+                <span className="flaticon-033-juice"></span>
+                <h4>Flexible Plans</h4>
+                <p>Choose from Basic, Intermediate, or Pro plans. Pay monthly, quarterly, or yearly — your choice.</p>
               </div>
             </div>
           </div>
@@ -87,8 +87,8 @@ export default function Index() {
           <div className="row">
             <div className="col-lg-12">
               <div className="section-title">
-                <span>Our Classes</span>
-                <h2>WHAT WE CAN OFFER</h2>
+                <span>What You Get</span>
+                <h2>TRAIN THE WAY YOU WANT</h2>
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function Index() {
                 <div className="ci-text">
                   <span>STRENGTH</span>
                   <h5>Weightlifting</h5>
-                  <NavLink to="#"><i className="fa fa-angle-right"></i></NavLink>
+                  <NavLink to="/signup"><i className="fa fa-angle-right"></i></NavLink>
                 </div>
               </div>
             </div>
@@ -107,9 +107,9 @@ export default function Index() {
               <div className="class-item">
                 <div className="ci-pic"><img src="/img/classes/class-2.jpg" alt="" /></div>
                 <div className="ci-text">
-                  <span>Cardio</span>
-                  <h5>Indoor cycling</h5>
-                  <NavLink to="#"><i className="fa fa-angle-right"></i></NavLink>
+                  <span>CARDIO</span>
+                  <h5>Indoor Cycling</h5>
+                  <NavLink to="/signup"><i className="fa fa-angle-right"></i></NavLink>
                 </div>
               </div>
             </div>
@@ -117,9 +117,9 @@ export default function Index() {
               <div className="class-item">
                 <div className="ci-pic"><img src="/img/classes/class-3.jpg" alt="" /></div>
                 <div className="ci-text">
-                  <span>STRENGTH</span>
-                  <h5>Kettlebell power</h5>
-                  <NavLink to="#"><i className="fa fa-angle-right"></i></NavLink>
+                  <span>POWER</span>
+                  <h5>Kettlebell Training</h5>
+                  <NavLink to="/signup"><i className="fa fa-angle-right"></i></NavLink>
                 </div>
               </div>
             </div>
@@ -127,9 +127,9 @@ export default function Index() {
               <div className="class-item">
                 <div className="ci-pic"><img src="/img/classes/class-4.jpg" alt="" /></div>
                 <div className="ci-text">
-                  <span>Cardio</span>
-                  <h4>Indoor cycling</h4>
-                  <NavLink to="#"><i className="fa fa-angle-right"></i></NavLink>
+                  <span>HIIT</span>
+                  <h4>High Intensity Training</h4>
+                  <NavLink to="/signup"><i className="fa fa-angle-right"></i></NavLink>
                 </div>
               </div>
             </div>
@@ -137,9 +137,9 @@ export default function Index() {
               <div className="class-item">
                 <div className="ci-pic"><img src="/img/classes/class-5.jpg" alt="" /></div>
                 <div className="ci-text">
-                  <span>Training</span>
+                  <span>COMBAT</span>
                   <h4>Boxing</h4>
-                  <NavLink to="#"><i className="fa fa-angle-right"></i></NavLink>
+                  <NavLink to="/signup"><i className="fa fa-angle-right"></i></NavLink>
                 </div>
               </div>
             </div>
@@ -154,9 +154,9 @@ export default function Index() {
           <div className="row">
             <div className="col-lg-12 text-center">
               <div className="bs-text">
-                <h2>registration now to get more deals</h2>
-                <div className="bt-tips">Where health, beauty and fitness meet.</div>
-                <NavLink to="#" className="primary-btn btn-normal">Appointment</NavLink>
+                <h2>Own a Gym? Partner with GymHub</h2>
+                <div className="bt-tips">Register your gym and start receiving members today.</div>
+                <NavLink to="/signup" className="primary-btn btn-normal">Register Your Gym</NavLink>
               </div>
             </div>
           </div>
@@ -170,67 +170,64 @@ export default function Index() {
           <div className="row">
             <div className="col-lg-12">
               <div className="section-title">
-                <span>Our Plan</span>
-                <h2>Choose your pricing plan</h2>
+                <span>Our Plans</span>
+                <h2>Choose Your Membership</h2>
               </div>
             </div>
           </div>
           <div className="row justify-content-center">
             <div className="col-lg-4 col-md-8">
               <div className="ps-item">
-                <h3>Class drop-in</h3>
+                <h3>Basic</h3>
                 <div className="pi-price">
-                  <h2>$ 39.0</h2>
-                  <span>SINGLE CLASS</span>
+                  <h2>Rs. 1,100</h2>
+                  <span>PER MONTH</span>
                 </div>
                 <ul>
-                  <li>Free riding</li>
-                  <li>Unlimited equipments</li>
-                  <li>Personal trainer</li>
-                  <li>Weight losing classes</li>
-                  <li>Month to mouth</li>
-                  <li>No time restriction</li>
+                  <li>Access to Basic tier gyms</li>
+                  <li>QR check-in at partner gyms</li>
+                  <li>Attendance history</li>
+                  <li>1 month / 3 months / 1 year</li>
+                  <li>JazzCash / Easypaisa / Card</li>
+                  <li>Cancel anytime</li>
                 </ul>
-                <NavLink to="#" className="primary-btn pricing-btn">Enroll now</NavLink>
-                <NavLink to="#" className="thumb-icon"><i className="fa fa-picture-o"></i></NavLink>
+                <NavLink to="/signup" className="primary-btn pricing-btn">Get Started</NavLink>
               </div>
             </div>
             <div className="col-lg-4 col-md-8">
               <div className="ps-item">
-                <h3>12 Month unlimited</h3>
+                <h3>Intermediate</h3>
                 <div className="pi-price">
-                  <h2>$ 99.0</h2>
-                  <span>SINGLE CLASS</span>
+                  <h2>Rs. 2,500</h2>
+                  <span>PER MONTH</span>
                 </div>
                 <ul>
-                  <li>Free riding</li>
-                  <li>Unlimited equipments</li>
-                  <li>Personal trainer</li>
-                  <li>Weight losing classes</li>
-                  <li>Month to mouth</li>
-                  <li>No time restriction</li>
+                  <li>Access to Basic + Intermediate gyms</li>
+                  <li>QR check-in at partner gyms</li>
+                  <li>Attendance history</li>
+                  <li>1 month / 3 months / 1 year</li>
+                  <li>JazzCash / Easypaisa / Card</li>
+                  <li>Cancel anytime</li>
                 </ul>
-                <NavLink to="#" className="primary-btn pricing-btn">Enroll now</NavLink>
-                <NavLink to="#" className="thumb-icon"><i className="fa fa-picture-o"></i></NavLink>
+                <NavLink to="/signup" className="primary-btn pricing-btn">Get Started</NavLink>
               </div>
             </div>
             <div className="col-lg-4 col-md-8">
               <div className="ps-item">
-                <h3>6 Month unlimited</h3>
+                <h3>Pro</h3>
                 <div className="pi-price">
-                  <h2>$ 59.0</h2>
-                  <span>SINGLE CLASS</span>
+                  <h2>Rs. 4,000</h2>
+                  <span>PER MONTH</span>
                 </div>
                 <ul>
-                  <li>Free riding</li>
-                  <li>Unlimited equipments</li>
-                  <li>Personal trainer</li>
-                  <li>Weight losing classes</li>
-                  <li>Month to mouth</li>
-                  <li>No time restriction</li>
+                  <li>Access to ALL gyms (Basic + Pro)</li>
+                  <li>QR check-in at partner gyms</li>
+                  <li>Attendance history</li>
+                  <li>1 month / 3 months / 1 year</li>
+                  <li>JazzCash / Easypaisa / Card</li>
+                  <li>Cancel anytime</li>
                 </ul>
-                <NavLink to="#" className="primary-btn pricing-btn">Enroll now</NavLink>
-                <NavLink to="#" className="thumb-icon"><i className="fa fa-picture-o"></i></NavLink>
+                <NavLink to="/signup" className="primary-btn pricing-btn">Get Started</NavLink>
               </div>
             </div>
           </div>
@@ -283,10 +280,10 @@ export default function Index() {
             <div className="col-lg-12">
               <div className="team-title">
                 <div className="section-title">
-                  <span>Our Team</span>
-                  <h2>TRAIN WITH EXPERTS</h2>
+                  <span>Our Network</span>
+                  <h2>PARTNER GYMS ACROSS THE CITY</h2>
                 </div>
-                <NavLink to="#" className="primary-btn btn-normal appoinment-btn">appointment</NavLink>
+                <NavLink to="/signup" className="primary-btn btn-normal appoinment-btn">Join Now</NavLink>
               </div>
             </div>
           </div>
@@ -295,48 +292,48 @@ export default function Index() {
               <div className="col-lg-4">
                 <div className="ts-item set-bg" data-setbg="img/team/team-1.jpg">
                   <div className="ts_text">
-                    <h4>Athart Rachel</h4>
-                    <span>Gym Trainer</span>
+                    <h4>PowerFit Arena</h4>
+                    <span>Pro Tier Gym</span>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="ts-item set-bg" data-setbg="img/team/team-2.jpg">
                   <div className="ts_text">
-                    <h4>Athart Rachel</h4>
-                    <span>Gym Trainer</span>
+                    <h4>IronZone Gym</h4>
+                    <span>Intermediate Tier Gym</span>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="ts-item set-bg" data-setbg="img/team/team-3.jpg">
                   <div className="ts_text">
-                    <h4>Athart Rachel</h4>
-                    <span>Gym Trainer</span>
+                    <h4>FitCore Studio</h4>
+                    <span>Basic Tier Gym</span>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="ts-item set-bg" data-setbg="img/team/team-4.jpg">
                   <div className="ts_text">
-                    <h4>Athart Rachel</h4>
-                    <span>Gym Trainer</span>
+                    <h4>EliteFit Club</h4>
+                    <span>Pro Tier Gym</span>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="ts-item set-bg" data-setbg="img/team/team-5.jpg">
                   <div className="ts_text">
-                    <h4>Athart Rachel</h4>
-                    <span>Gym Trainer</span>
+                    <h4>PulseFit Center</h4>
+                    <span>Intermediate Tier Gym</span>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="ts-item set-bg" data-setbg="img/team/team-6.jpg">
                   <div className="ts_text">
-                    <h4>Athart Rachel</h4>
-                    <span>Gym Trainer</span>
+                    <h4>ActiveZone Gym</h4>
+                    <span>Basic Tier Gym</span>
                   </div>
                 </div>
               </div>
@@ -353,22 +350,22 @@ export default function Index() {
             <div className="col-md-4">
               <div className="gt-text">
                 <i className="fa fa-map-marker"></i>
-                <p>333 Middle Winchendon Rd, Rindge,<br /> NH 03461</p>
+                <p>GymHub HQ, Lahore,<br /> Punjab, Pakistan</p>
               </div>
             </div>
             <div className="col-md-4">
               <div className="gt-text">
                 <i className="fa fa-mobile"></i>
                 <ul>
-                  <li>125-711-811</li>
-                  <li>125-668-886</li>
+                  <li>+92-300-1234567</li>
+                  <li>+92-321-7654321</li>
                 </ul>
               </div>
             </div>
             <div className="col-md-4">
               <div className="gt-text email">
                 <i className="fa fa-envelope"></i>
-                <p>Support.gymcenter@gmail.com</p>
+                <p>support@gymhub.pk</p>
               </div>
             </div>
           </div>

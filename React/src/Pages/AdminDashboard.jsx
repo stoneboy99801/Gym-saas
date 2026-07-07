@@ -9,7 +9,10 @@ const AdminMembersSection = () => {
   const [msg, setMsg] = useState("");
 
   useEffect(() => {
-    api.get("/admin/members").then((r) => { setMembers(r.data.data || []); setLoading(false); });
+    api.get("/admin/members")
+      .then((r) => { setMembers(Array.isArray(r.data.data) ? r.data.data : []); })
+      .catch(() => { setMembers([]); })
+      .finally(() => setLoading(false));
   }, []);
 
   const handleEdit = (member) => {
@@ -97,7 +100,7 @@ const AdminMembersSection = () => {
                   ) : (
                     <>
                       <button className="dashboard-btn" style={{ marginRight: 6 }} onClick={() => handleEdit(m)}>Edit</button>
-                      <button className="dashboard-btn dashboard-btn--ghost" onClick={() => handleDelete(m.id)}>Delete</button>
+                      <button className="dashboard-btn dashboard-btn--danger" onClick={() => handleDelete(m.id)}>Delete</button>
                     </>
                   )}
                 </td>
@@ -120,11 +123,14 @@ const AdminOwnersSection = () => {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    api.get("/admin/owners").then((r) => { setOwners(r.data.data || []); setLoading(false); });
+    api.get("/admin/owners")
+      .then((r) => { setOwners(Array.isArray(r.data.data) ? r.data.data : []); })
+      .catch(() => { setOwners([]); })
+      .finally(() => setLoading(false));
   }, []);
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Is owner aur uske saare gyms delete karna chahte ho?")) return;
+    if (!window.confirm("Are you sure you want to delete this owner and all their gyms?")) return;
     await api.delete(`/admin/owners/${id}`);
     setOwners((prev) => prev.filter((o) => o.id !== id));
   };
@@ -134,7 +140,7 @@ const AdminOwnersSection = () => {
     setFormError("");
     setFormSuccess("");
     if (form.password !== form.password_confirmation) {
-      setFormError("Password aur confirm password match nahi kar rahe.");
+      setFormError("Password and confirm password do not match.");
       return;
     }
     setSubmitting(true);
@@ -148,7 +154,7 @@ const AdminOwnersSection = () => {
       setForm({ name: "", email: "", password: "", password_confirmation: "" });
       setShowForm(false);
     } catch (err) {
-      setFormError(err.response?.data?.message || "Owner create nahi ho saka, dobara try karein.");
+      setFormError(err.response?.data?.message || "Failed to create owner. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -166,15 +172,57 @@ const AdminOwnersSection = () => {
       </div>
 
       {showForm && (
-        <form className="gym-form" onSubmit={handleCreateOwner} style={{ marginBottom: 20 }}>
-          <input type="text" placeholder="Owner ka naam" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
-          <input type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
-          <input type="password" placeholder="Password (kam se kam 6 characters)" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required />
-          <input type="password" placeholder="Password dobara likhein" value={form.password_confirmation} onChange={(e) => setForm({ ...form, password_confirmation: e.target.value })} required />
-          {formError && <div className="dashboard-banner error">{formError}</div>}
-          {formSuccess && <div className="dashboard-banner success">{formSuccess}</div>}
+        <form onSubmit={handleCreateOwner} style={{ marginBottom: 24 }}>
+          <div className="gym-form" style={{ marginBottom: 16 }}>
+            <div className="gym-form__group">
+              <label className="gym-form__label">Full Name</label>
+              <input
+                className="gym-form__input"
+                type="text"
+                placeholder="Owner's full name"
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                required
+              />
+            </div>
+            <div className="gym-form__group">
+              <label className="gym-form__label">Email Address</label>
+              <input
+                className="gym-form__input"
+                type="email"
+                placeholder="owner@example.com"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                required
+              />
+            </div>
+            <div className="gym-form__group">
+              <label className="gym-form__label">Password</label>
+              <input
+                className="gym-form__input"
+                type="password"
+                placeholder="Minimum 6 characters"
+                value={form.password}
+                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                required
+              />
+            </div>
+            <div className="gym-form__group">
+              <label className="gym-form__label">Confirm Password</label>
+              <input
+                className="gym-form__input"
+                type="password"
+                placeholder="Re-enter your password"
+                value={form.password_confirmation}
+                onChange={(e) => setForm({ ...form, password_confirmation: e.target.value })}
+                required
+              />
+            </div>
+          </div>
+          {formError && <div className="dashboard-banner error" style={{ marginBottom: 14 }}>{formError}</div>}
+          {formSuccess && <div className="dashboard-banner success" style={{ marginBottom: 14 }}>{formSuccess}</div>}
           <button type="submit" className="dashboard-btn" disabled={submitting}>
-            {submitting ? "Ban raha hai..." : "Owner Account Banao"}
+            {submitting ? "Creating..." : "Create Owner Account"}
           </button>
         </form>
       )}
@@ -184,7 +232,7 @@ const AdminOwnersSection = () => {
           <thead><tr><th>Name</th><th>Email</th><th>Gyms</th><th>Joined</th><th>Action</th></tr></thead>
           <tbody>
             {owners.length === 0 ? (
-              <tr><td colSpan="5">Koi owner nahi mila.</td></tr>
+              <tr><td colSpan="5">No owners found.</td></tr>
             ) : owners.map((o) => (
               <tr key={o.id}>
                 <td>{o.name}</td>
@@ -192,7 +240,7 @@ const AdminOwnersSection = () => {
                 <td>{o.gyms_count}</td>
                 <td>{new Date(o.created_at).toLocaleDateString()}</td>
                 <td>
-                  <button className="dashboard-btn dashboard-btn--ghost" onClick={() => handleDelete(o.id)}>Delete</button>
+                  <button className="dashboard-btn dashboard-btn--danger" onClick={() => handleDelete(o.id)}>Delete</button>
                 </td>
               </tr>
             ))}
@@ -208,7 +256,10 @@ const AdminGymsSection = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.get("/admin/gyms").then((r) => { setGyms(r.data.data || []); setLoading(false); });
+    api.get("/admin/gyms")
+      .then((r) => { setGyms(Array.isArray(r.data.data) ? r.data.data : []); })
+      .catch(() => { setGyms([]); })
+      .finally(() => setLoading(false));
   }, []);
 
   const handleDelete = async (id) => {
@@ -235,7 +286,7 @@ const AdminGymsSection = () => {
                 <td>{g.allowed_tier}</td>
                 <td>{g.owner?.name || "—"}</td>
                 <td>
-                  <button className="dashboard-btn dashboard-btn--ghost" onClick={() => handleDelete(g.id)}>Delete</button>
+                  <button className="dashboard-btn dashboard-btn--danger" onClick={() => handleDelete(g.id)}>Delete</button>
                 </td>
               </tr>
             ))}
@@ -247,11 +298,11 @@ const AdminGymsSection = () => {
 };
 
 const ADMIN_STATS_CONFIG = [
-  { key: "members",        label: "Total Members",   accent: "#f36100" },
+  { key: "members",        label: "Total Members",   accent: "#0ea5e9" },
   { key: "active_members", label: "Active Members",  accent: "#28a745" },
-  { key: "owners",         label: "Gym Owners",      accent: "#e53637" },
-  { key: "gyms",           label: "Total Gyms",      accent: "#f36100" },
-  { key: "check_ins",      label: "Total Check-Ins", accent: "#e53637" },
+  { key: "owners",         label: "Gym Owners",      accent: "#0ea5e9" },
+  { key: "gyms",           label: "Total Gyms",      accent: "#0ea5e9" },
+  { key: "check_ins",      label: "Total Check-Ins", accent: "#0ea5e9" },
 ];
 
 export default function AdminDashboard({ activeSection, adminStats, recentCheckIns }) {

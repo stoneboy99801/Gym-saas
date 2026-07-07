@@ -11,10 +11,12 @@ export default function Footer() {
                 <div className="col-lg-4">
                     <div className="fs-about">
                         <div className="fa-logo">
-                            <NavLink to="#"><img src="img/logo.png" alt=""/></NavLink>
+                            <NavLink to="/" className="brand-logo" aria-label="GymHub home">
+                                <span className="brand-logo__mark"><span>GH</span></span>
+                                <span className="brand-logo__text">Gym<span>Hub</span></span>
+                            </NavLink>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore dolore magna aliqua endisse ultrices gravida lorem.</p>
+                        <p>Pakistan's first multi-gym membership platform. One membership, every gym in the city.</p>
                         <div className="fa-social">
                             <NavLink to="#"><i className="fa fa-facebook"></i></NavLink>
                             <NavLink to="#"><i className="fa fa-twitter"></i></NavLink>

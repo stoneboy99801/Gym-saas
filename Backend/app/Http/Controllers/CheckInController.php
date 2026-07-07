@@ -72,9 +72,9 @@ class CheckInController extends Controller
             ], 201);
         });
     }
-      public function history(Request $request)
+    public function history(Request $request)
     {
-        $history = CheckIn::with('gym')
+        $history = CheckIn::with('gym:id,gym_name,area')
             ->where('user_id', $request->user()->id)
             ->orderBy('checked_in_at', 'desc')
             ->get();

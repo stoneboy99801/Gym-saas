@@ -10,7 +10,7 @@ export default function About() {
           <div className="row">
             <div className="col-lg-12 text-center">
               <div className="breadcrumb-text">
-                <h2>About us</h2>
+                <h2>About Us</h2>
                 <div className="bt-option">
                   <NavLink to="/">Home</NavLink>
                   <span>About</span>
@@ -28,8 +28,8 @@ export default function About() {
           <div className="row">
             <div className="col-lg-12">
               <div className="section-title">
-                <span>Why chose us?</span>
-                <h2>PUSH YOUR LIMITS FORWARD</h2>
+                <span>Why GymHub?</span>
+                <h2>FREEDOM TO TRAIN ANYWHERE</h2>
               </div>
             </div>
           </div>
@@ -37,29 +37,29 @@ export default function About() {
             <div className="col-lg-3 col-sm-6">
               <div className="cs-item">
                 <span className="flaticon-034-stationary-bike"></span>
-                <h4>Modern equipment</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut dolore facilisis.</p>
-              </div>
-            </div>
-            <div className="col-lg-3 col-sm-6">
-              <div className="cs-item">
-                <span className="flaticon-033-juice"></span>
-                <h4>Healthy nutrition plan</h4>
-                <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                <h4>Multi-Gym Access</h4>
+                <p>One membership unlocks every partner gym in the city. No separate fees, no extra sign-ups.</p>
               </div>
             </div>
             <div className="col-lg-3 col-sm-6">
               <div className="cs-item">
                 <span className="flaticon-002-dumbell"></span>
-                <h4>Proffesponal training plan</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut dolore facilisis.</p>
+                <h4>QR Check-In</h4>
+                <p>Instant entry at any partner gym using your personal QR code. Fast, secure, and contactless.</p>
               </div>
             </div>
             <div className="col-lg-3 col-sm-6">
               <div className="cs-item">
                 <span className="flaticon-014-heart-beat"></span>
-                <h4>Unique to your needs</h4>
-                <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                <h4>Attendance Tracking</h4>
+                <p>Every check-in is logged. Monitor your workout consistency across all gyms from one dashboard.</p>
+              </div>
+            </div>
+            <div className="col-lg-3 col-sm-6">
+              <div className="cs-item">
+                <span className="flaticon-033-juice"></span>
+                <h4>Tier-Based Plans</h4>
+                <p>Pick the plan that fits your lifestyle — Basic, Intermediate, or Pro. Upgrade anytime.</p>
               </div>
             </div>
           </div>
@@ -81,34 +81,35 @@ export default function About() {
             <div className="col-lg-6 p-0">
               <div className="about-text">
                 <div className="section-title">
-                  <span>About Us</span>
-                  <h2>What we have done</h2>
+                  <span>Our Story</span>
+                  <h2>What is GymHub?</h2>
                 </div>
                 <div className="at-desc">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                    viverra maecenas accumsan lacus vel facilisis. aliquip ex ea commodo consequat sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                  <p>GymHub is Pakistan's first multi-gym membership platform. We believe fitness should be
+                    flexible — not locked to a single location. With one GymHub membership, you can walk into
+                    any of our partner gyms across the city, scan your QR code, and start training. No
+                    paperwork, no waiting, no extra fees. Whether you're a daily lifter or a weekend warrior,
+                    GymHub gives you the freedom to train on your terms.</p>
                 </div>
                 <div className="about-bar">
                   <div className="ab-item">
-                    <p>Body building</p>
+                    <p>Partner Gyms</p>
                     <div id="bar1" className="barfiller">
-                      <span className="fill" data-percentage="80"></span>
-                      <div className="tipWrap"><span className="tip"></span></div>
-                    </div>
-                  </div>
-                  <div className="ab-item">
-                    <p>Training</p>
-                    <div id="bar2" className="barfiller">
                       <span className="fill" data-percentage="85"></span>
                       <div className="tipWrap"><span className="tip"></span></div>
                     </div>
                   </div>
                   <div className="ab-item">
-                    <p>Fitness</p>
+                    <p>Active Members</p>
+                    <div id="bar2" className="barfiller">
+                      <span className="fill" data-percentage="90"></span>
+                      <div className="tipWrap"><span className="tip"></span></div>
+                    </div>
+                  </div>
+                  <div className="ab-item">
+                    <p>Member Satisfaction</p>
                     <div id="bar3" className="barfiller">
-                      <span className="fill" data-percentage="75"></span>
+                      <span className="fill" data-percentage="95"></span>
                       <div className="tipWrap"><span className="tip"></span></div>
                     </div>
                   </div>
@@ -127,10 +128,10 @@ export default function About() {
             <div className="col-lg-12">
               <div className="team-title">
                 <div className="section-title">
-                  <span>Our Team</span>
-                  <h2>TRAIN WITH EXPERTS</h2>
+                  <span>Our Network</span>
+                  <h2>PARTNER GYMS ACROSS THE CITY</h2>
                 </div>
-                <NavLink to="/#" className="primary-btn btn-normal appoinment-btn">appointment</NavLink>
+                <NavLink to="/signup" className="primary-btn btn-normal appoinment-btn">Join Now</NavLink>
               </div>
             </div>
           </div>
@@ -139,48 +140,48 @@ export default function About() {
               <div className="col-lg-4">
                 <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-1.jpg')" }}>
                   <div className="ts_text">
-                    <h4>Athart Rachel</h4>
-                    <span>Gym Trainer</span>
+                    <h4>PowerFit Arena</h4>
+                    <span>Pro Tier Gym</span>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-2.jpg')" }}>
                   <div className="ts_text">
-                    <h4>Athart Rachel</h4>
-                    <span>Gym Trainer</span>
+                    <h4>IronZone Gym</h4>
+                    <span>Intermediate Tier Gym</span>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-3.jpg')" }}>
                   <div className="ts_text">
-                    <h4>Athart Rachel</h4>
-                    <span>Gym Trainer</span>
+                    <h4>FitCore Studio</h4>
+                    <span>Basic Tier Gym</span>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-4.jpg')" }}>
                   <div className="ts_text">
-                    <h4>Athart Rachel</h4>
-                    <span>Gym Trainer</span>
+                    <h4>EliteFit Club</h4>
+                    <span>Pro Tier Gym</span>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-5.jpg')" }}>
                   <div className="ts_text">
-                    <h4>Athart Rachel</h4>
-                    <span>Gym Trainer</span>
+                    <h4>PulseFit Center</h4>
+                    <span>Intermediate Tier Gym</span>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-6.jpg')" }}>
                   <div className="ts_text">
-                    <h4>Athart Rachel</h4>
-                    <span>Gym Trainer</span>
+                    <h4>ActiveZone Gym</h4>
+                    <span>Basic Tier Gym</span>
                   </div>
                 </div>
               </div>
@@ -196,9 +197,9 @@ export default function About() {
           <div className="row">
             <div className="col-lg-12 text-center">
               <div className="bs-text">
-                <h2>registration now to get more deals</h2>
-                <div className="bt-tips">Where health, beauty and fitness meet.</div>
-                <NavLink to="/#" className="primary-btn btn-normal">Appointment</NavLink>
+                <h2>Own a Gym? Partner with GymHub</h2>
+                <div className="bt-tips">Register your gym and start receiving members today.</div>
+                <NavLink to="/signup" className="primary-btn btn-normal">Register Your Gym</NavLink>
               </div>
             </div>
           </div>
@@ -212,8 +213,8 @@ export default function About() {
           <div className="row">
             <div className="col-lg-12">
               <div className="section-title">
-                <span>Testimonial</span>
-                <h2>Our cilent say</h2>
+                <span>Testimonials</span>
+                <h2>What Our Members Say</h2>
               </div>
             </div>
           </div>
@@ -225,10 +226,9 @@ export default function About() {
                     <img src="/img/testimonial/testimonial-1.jpg" alt="" />
                   </div>
                   <div className="ti_text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
-                      gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-                    <h5>Marshmello Gomez</h5>
+                    <p>GymHub completely changed how I work out. I travel between DHA and Gulberg every week —
+                      now I just scan my QR at whichever gym is closest. One membership, zero hassle.</p>
+                    <h5>Ahmed Raza</h5>
                     <div className="tt-rating">
                       <i className="fa fa-star"></i>
                       <i className="fa fa-star"></i>
@@ -247,10 +247,9 @@ export default function About() {
                     <img src="/img/testimonial/testimonial-2.jpg" alt="" />
                   </div>
                   <div className="ti_text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
-                      gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-                    <h5>Marshmello Gomez</h5>
+                    <p>As a gym owner, GymHub brought us new members we never would have reached on our own.
+                      The QR check-in system is smooth and the dashboard makes managing everything easy.</p>
+                    <h5>Sara Khan — Gym Owner</h5>
                     <div className="tt-rating">
                       <i className="fa fa-star"></i>
                       <i className="fa fa-star"></i>
@@ -274,22 +273,22 @@ export default function About() {
             <div className="col-md-4">
               <div className="gt-text">
                 <i className="fa fa-map-marker"></i>
-                <p>333 Middle Winchendon Rd, Rindge,<br /> NH 03461</p>
+                <p>GymHub HQ, Lahore,<br /> Punjab, Pakistan</p>
               </div>
             </div>
             <div className="col-md-4">
               <div className="gt-text">
                 <i className="fa fa-mobile"></i>
                 <ul>
-                  <li>125-711-811</li>
-                  <li>125-668-886</li>
+                  <li>+92-300-1234567</li>
+                  <li>+92-321-7654321</li>
                 </ul>
               </div>
             </div>
             <div className="col-md-4">
               <div className="gt-text email">
                 <i className="fa fa-envelope"></i>
-                <p>Support.gymcenter@gmail.com</p>
+                <p>support@gymhub.pk</p>
               </div>
             </div>
           </div>

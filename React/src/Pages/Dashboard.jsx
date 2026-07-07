@@ -25,14 +25,14 @@ const Dashboard = () => {
   const [memberTier, setMemberTier] = useState("basic");
   const [subscription, setSubscription] = useState(null);
 
-  const loadDashboard = async () => {
+  const loadDashboard = async (resetSection = false) => {
     try {
       setLoading(true);
       const configResponse = await api.get("/dashboard-config");
       const resolvedRole = configResponse.data.role || "member";
       setRole(resolvedRole);
       localStorage.setItem("role", resolvedRole);
-      setActiveSection("dashboard");
+      if (resetSection) setActiveSection("dashboard");
 
       if (resolvedRole === "member") {
         const [memberDashRes, memberGymsRes, attendanceRes] = await Promise.all([
@@ -76,11 +76,41 @@ const Dashboard = () => {
     }
   };
 
-  useEffect(() => { loadDashboard(); }, []);
+  useEffect(() => { loadDashboard(true); }, []);
 
   const handleSectionChange = (sectionKey) => setActiveSection(sectionKey);
 
   if (loading || !role) return <div className="dashboard-loading">Loading dashboard...</div>;
+
+  // Agar member ka subscription active nahi hai to seedha membership page dikhao
+  if (role === "member" && !subscription?.is_active) {
+    return (
+      <div className="dashboard-wrapper">
+        <div className="dashboard-content">
+          <div className="dashboard-hero">
+            <div className="dashboard-hero__copy">
+              <span className="dashboard-eyebrow">Welcome to GymHub</span>
+              <h1>Activate Your Membership</h1>
+              <p>Choose a plan to get started. Once activated, you can access any partner gym with a single QR scan.</p>
+            </div>
+            <div className="dashboard-hero__badge">MEMBER</div>
+          </div>
+          <MemberDashboard
+            activeSection="membership"
+            dashboardData={dashboardData}
+            gyms={gyms}
+            setGyms={setGyms}
+            attendance={attendance}
+            memberTier={memberTier}
+            setMemberTier={setMemberTier}
+            subscription={subscription}
+            setSubscription={setSubscription}
+            onReload={() => loadDashboard(false)}
+          />
+        </div>
+      </div>
+    );
+  }
 
   const { title, summary } = ROLE_TITLES[role] || ROLE_TITLES.member;
 
@@ -109,7 +139,7 @@ const Dashboard = () => {
             setMemberTier={setMemberTier}
             subscription={subscription}
             setSubscription={setSubscription}
-            onReload={loadDashboard}
+            onReload={() => loadDashboard(false)}
           />
         )}
 

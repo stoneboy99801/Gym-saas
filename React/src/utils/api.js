@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: 'http://127.0.0.1:8000/api', // Tumhare Laravel backend ka URL
+    baseURL: 'http://127.0.0.1:8000/api',
     timeout: 10000, // Agar 10 seconds tak response na aaye toh request cancel ho jaye
     headers: {
         'Content-Type': 'application/json',

@@ -35,7 +35,7 @@ class AdminController extends Controller
     }
 
     // ── 2. MEMBERS LIST ─────────────────────────────────────
-    public function members()
+    public function members(Request $request)
     {
         $members = User::where('role', 'member')
             ->select('id', 'name', 'email', 'tier', 'is_active', 'subscription_expiry', 'created_at')
@@ -81,7 +81,7 @@ class AdminController extends Controller
     }
 
     // ── 5. OWNERS LIST ──────────────────────────────────────
-    public function owners()
+    public function owners(Request $request)
     {
         $owners = User::where('role', 'owner')
             ->select('id', 'name', 'email', 'is_active', 'created_at')
@@ -110,7 +110,7 @@ public function createOwner(Request $request)
     if ($emailExists) {
         return response()->json([
             'status'  => 'error',
-            'message' => 'Yeh email pehle se registered hai.'
+            'message' => 'This email is already registered.'
         ], 422);
     }
 
@@ -126,7 +126,7 @@ public function createOwner(Request $request)
 
     return response()->json([
         'status'  => 'success',
-        'message' => 'Naya owner account ban gaya!',
+        'message' => 'New owner account created successfully!',
         'data'    => [
             'id'    => $owner->id,
             'name'  => $owner->name,
@@ -158,7 +158,7 @@ public function createOwner(Request $request)
     }
 
     // ── 7. ALL GYMS LIST ────────────────────────────────────
-    public function gyms()
+    public function gyms(Request $request)
     {
         $gyms = Gym::with('owner:id,name,email')
             ->latest()

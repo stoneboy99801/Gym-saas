@@ -20,10 +20,12 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 Route::middleware('throttle:5,1')->post('/login', [AuthController::class, 'login']);
-Route::post('/signup', [AuthController::class, 'signup']);
-Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
-Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
-Route::post('/reset-password', [AuthController::class, 'resetPassword']);
+Route::middleware('throttle:10,1')->group(function () {
+    Route::post('/signup', [AuthController::class, 'signup']);
+    Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
+    Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
+    Route::post('/reset-password', [AuthController::class, 'resetPassword']);
+});
 
 Route::middleware('auth:sanctum')->get('/dashboard-config', function (Request $request) {
     $user = $request->user();
