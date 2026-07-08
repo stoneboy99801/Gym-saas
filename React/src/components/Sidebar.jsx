@@ -11,6 +11,7 @@ const Sidebar = ({ role, activeSection, onSectionChange }) => {
     member: [
       { key: "dashboard", label: "Dashboard" },
       { key: "scan-qr", label: "Scan QR / Check-In" },
+      { key: "my-gyms", label: "My Gyms" },
       { key: "attendance", label: "Attendance History" },
       { key: "reviews", label: "My Gym Reviews" },
       { key: "membership", label: "My Membership" },

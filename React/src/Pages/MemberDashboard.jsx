@@ -216,7 +216,103 @@ export default function MemberDashboard({
     }
   };
 
-  // ── Sections ─────────────────────────────────────────────
+  if (activeSection === "my-gyms") {
+    const memberLevel = TIER_LEVELS[memberTier] || 1;
+    const TIER_COLORS = { basic: "#0ea5e9", intermediate: "#f59e0b", pro: "#a855f7" };
+    const allTiers = ["basic", "intermediate", "pro"];
+
+    // Group gyms by tier
+    const gymsByTier = allTiers.reduce((acc, tier) => {
+      acc[tier] = gyms.filter((g) => g.allowed_tier === tier);
+      return acc;
+    }, {});
+
+    return (
+      <>
+        {/* Member tier info banner */}
+        <div className="dashboard-hero" style={{ marginBottom: 24 }}>
+          <div className="dashboard-hero__copy">
+            <span className="dashboard-eyebrow">Your Access Level</span>
+            <h1>{memberTier} Plan</h1>
+            <p>
+              You can access all <strong>Basic</strong>
+              {memberLevel >= 2 && <>, <strong>Intermediate</strong></>}
+              {memberLevel >= 3 && <>, <strong>Pro</strong></>}
+              {" "}tier gyms. Upgrade your plan to unlock more gyms.
+            </p>
+          </div>
+          <div className="dashboard-hero__badge">{memberTier.toUpperCase()}</div>
+        </div>
+
+        {allTiers.map((tier) => {
+          const tierLevel = TIER_LEVELS[tier];
+          const isAccessible = memberLevel >= tierLevel;
+          const tierGyms = gymsByTier[tier];
+          const color = TIER_COLORS[tier];
+
+          return (
+            <div key={tier} className="dashboard-card" style={{ marginBottom: 24, opacity: isAccessible ? 1 : 0.5 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+                <h3 style={{ margin: 0, padding: 0, border: "none", textTransform: "uppercase", color: isAccessible ? color : "#555" }}>
+                  {tier} Tier Gyms
+                </h3>
+                <span style={{
+                  fontSize: 11, fontFamily: "Oswald", letterSpacing: 1.5, textTransform: "uppercase",
+                  padding: "4px 12px", borderRadius: 20,
+                  border: `1px solid ${isAccessible ? color : "#333"}`,
+                  color: isAccessible ? color : "#555",
+                }}>
+                  {isAccessible ? "✓ Accessible" : "🔒 Upgrade Required"}
+                </span>
+              </div>
+
+              {tierGyms.length === 0 ? (
+                <p className="dashboard-note">No {tier} tier gyms registered yet.</p>
+              ) : (
+                <div className="gym-cards-grid">
+                  {tierGyms.map((gym, idx) => (
+                    <div key={gym.id} className="gym-card" style={{ opacity: isAccessible ? 1 : 0.4, pointerEvents: isAccessible ? "auto" : "none" }}>
+                      <div className="gym-card__accent-bar" style={{ background: isAccessible ? color : "#333" }} />
+                      <div className="gym-card__body">
+                        <div className="gym-card__header">
+                          <span className="gym-card__tier-badge" style={{ borderColor: color, color }}>{gym.allowed_tier}</span>
+                          <span className="gym-card__number">#{String(idx + 1).padStart(2, "0")}</span>
+                        </div>
+                        <h4 className="gym-card__name">{gym.gym_name}</h4>
+                        <div className="gym-card__divider" />
+                        <div className="gym-card__meta">
+                          <div className="gym-card__meta-row">
+                            <span className="gym-card__meta-label">Area</span>
+                            <span className="gym-card__meta-value">{gym.area}</span>
+                          </div>
+                          <div className="gym-card__meta-row">
+                            <span className="gym-card__meta-label">Address</span>
+                            <span className="gym-card__meta-value">{gym.address || "—"}</span>
+                          </div>
+                        </div>
+                        {isAccessible && (
+                          <div style={{ marginTop: "auto", paddingTop: 12, fontSize: 11, color: "#0ea5e9", fontFamily: "Oswald", letterSpacing: 1, textTransform: "uppercase" }}>
+                            ✓ You can check in here
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {!isAccessible && (
+                <div style={{ marginTop: 16, padding: "12px 16px", borderRadius: 8, background: "rgba(255,255,255,0.03)", border: "1px solid #222", fontSize: 13, color: "#555" }}>
+                  Upgrade to <strong style={{ color }}>{tier.charAt(0).toUpperCase() + tier.slice(1)}</strong> plan or higher to access these gyms.
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </>
+    );
+  }
+
   if (activeSection === "scan-qr" || activeSection === "dashboard") {
     return (
       <>

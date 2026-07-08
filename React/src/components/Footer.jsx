@@ -71,9 +71,7 @@ export default function Footer() {
             <div className="row">
                 <div className="col-lg-12 text-center">
                     <div className="copyright-text">
-                        <p> Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
-  Copyright &copy;{year} All rights reserved | This template is made with <i className="fa fa-heart" aria-hidden="true"></i> by <NavLink to="https://colorlib.com/" target="_blank">Colorlib</NavLink>
-  {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}</p>
+                        
                     </div>
                 </div>
             </div>

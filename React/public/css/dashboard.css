@@ -59,7 +59,8 @@
     min-height: 38px;
     padding: 0 14px;
     border-radius: 999px;
-    background: rgba(14, 165, 233, 0.10);`r`n    border: 1px solid rgba(14, 165, 233, 0.30);
+    background: rgba(14, 165, 233, 0.10);
+    border: 1px solid rgba(14, 165, 233, 0.30);
     color: #fff;
     font-family: "Oswald", sans-serif;
     font-size: 12px;
@@ -90,9 +91,9 @@
     border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-`.dashboard-sidebar .sidebar-item:hover,
+.dashboard-sidebar .sidebar-item:hover,
 .dashboard-sidebar .sidebar-item.active {
-    background: rgba(14, 165, 233, 0.10);`
+    background: rgba(14, 165, 233, 0.10);
     border-color: rgba(14, 165, 233, 0.30);
     color: #fff;
     transform: translateX(2px);
@@ -131,6 +132,95 @@
 .dashboard-content {
     flex: 1;
     padding: 34px;
+}
+
+@media (max-width: 1100px) {
+    .dashboard-wrapper {
+        flex-direction: column;
+    }
+
+    .dashboard-sidebar {
+        width: 100%;
+        min-height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid rgba(14, 165, 233, 0.20);
+    }
+
+    .dashboard-content {
+        padding: 24px;
+    }
+
+    .dashboard-sidebar__nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-sidebar__footer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-content {
+        padding: 18px;
+    }
+
+    .dashboard-hero {
+        flex-direction: column;
+        padding: 22px;
+    }
+
+    .dashboard-card--split {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card__header-row,
+    .gym-form-card__head,
+    .gym-table-head,
+    .membership-status {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-stat-value {
+        font-size: 34px;
+    }
+
+    .dashboard-table {
+        min-width: 520px;
+    }
+}
+
+@media (max-width: 576px) {
+    .dashboard-sidebar {
+        padding: 20px;
+    }
+
+    .dashboard-sidebar__nav,
+    .dashboard-sidebar__footer {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-hero h1 {
+        font-size: 26px;
+    }
+
+    .dashboard-card h2,
+    .dashboard-card h3 {
+        font-size: 18px;
+    }
+
+    .dashboard-btn {
+        width: 100%;
+    }
+
+    .membership-plans {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-stats-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .dashboard-hero {
@@ -334,7 +424,9 @@
     text-transform: uppercase;
     padding: 3px 10px;
     border-radius: 20px;
-    background: rgba(14, 165, 233, 0.10);`r`n    color: #0ea5e9;`r`n    border: 1px solid rgba(14, 165, 233, 0.30);
+    background: rgba(14, 165, 233, 0.10);
+    color: #0ea5e9;
+    border: 1px solid rgba(14, 165, 233, 0.30);
     margin-top: 6px;
 }
 .sidebar-item {
@@ -370,10 +462,10 @@
     align-items: flex-start;
     margin-bottom: 20px;
 }
-.qr-preview-card__eyebrow {`
-    font-size: 10px;`
-    text-transform: uppercase;`
-    letter-spacing: 2px;`
+.qr-preview-card__eyebrow {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     color: #0ea5e9;
     margin-bottom: 4px;
 }
@@ -954,7 +1046,10 @@
     transition: background 0.2s, color 0.2s;
 }
 
-.checkout-modal__close:hover {`r`n    background: rgba(14,165,233,0.15);`r`n    color: #0ea5e9;`r`n}
+.checkout-modal__close:hover {
+    background: rgba(14,165,233,0.15);
+    color: #0ea5e9;
+}
 
 .checkout-modal__close:disabled {
     opacity: 0.45;
